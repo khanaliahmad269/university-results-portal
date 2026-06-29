@@ -1,20 +1,18 @@
-# University Results Portal
+# Personal Portfolio
 
-## Description
-A web application for students to view their results and staff to post results.
+This is a personal portfolio website built with React for the frontend and Express.js for the backend. It includes sections for about, projects, skills, and a contact form.
 
-## Tech Stack
-- **Frontend**: React, Tailwind CSS
-- **Backend**: Node.js, Express.js
-- **Database**: SQLite
+## Features
+
+- Responsive design with Tailwind CSS
+- Dynamic project listing
+- Contact form with email functionality
+- Smooth navigation with React Router
 
 ## Setup Instructions
 
-### Prerequisites
-- Node.js and npm installed
-- SQLite installed
-
 ### Frontend
+
 1. Navigate to the `frontend` directory:
    ```bash
    cd frontend
@@ -29,6 +27,7 @@ A web application for students to view their results and staff to post results.
    ```
 
 ### Backend
+
 1. Navigate to the `backend` directory:
    ```bash
    cd backend
@@ -37,22 +36,22 @@ A web application for students to view their results and staff to post results.
    ```bash
    npm install
    ```
-3. Create a `.env` file based on `.env.example` and set your environment variables.
+3. Create a `.env` file based on the `.env.example` template.
 4. Start the server:
    ```bash
    npm run dev
    ```
 
-## Features
-- User authentication with JWT
-- Role-based access control
-- View results for students
-- Post results for staff
-- Admin management of users and results
+### Environment Variables
 
-## API Endpoints
-- `POST /api/auth/login`: Authenticate user and return a token.
-- `GET /api/results`: Get results for the logged-in student.
-- `POST /api/results`: Post a new result by staff.
-- `GET /api/users`: Get a list of all users (admin only).
-- `POST /api/users`: Create a new user (admin only).
+Create a `.env` file in the `backend` directory with the following variables:
+
+```
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASS=your-email-password
+PORT=5000
+```
+
+## License
+
+This project is licensed under the MIT License.
