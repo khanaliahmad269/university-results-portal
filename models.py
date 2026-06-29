@@ -1,1 +1,20 @@
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, TIMESTAMP, func from sqlalchemy.orm import declarative_base, relationship Base = declarative_base() class User(Base): __tablename__ = 'users' id = Column(Integer, primary_key=True, autoincrement=True) username = Column(String, unique=True, nullable=False) password = Column(String, nullable=False) role = Column(String, nullable=False) created_at = Column(TIMESTAMP, server_default=func.now()) updated_at = Column(TIMESTAMP, server_default=func.now(), onupdate=func.now()) results = relationship('Result', back_populates='student') class Result(Base): __tablename__ = 'results' id = Column(Integer, primary_key=True, autoincrement=True) student_id = Column(Integer, ForeignKey('users.id'), nullable=False) subject = Column(String, nullable=False) grade = Column(String, nullable=False) semester = Column(String, nullable=False) created_at = Column(TIMESTAMP, server_default=func.now()) updated_at = Column(TIMESTAMP, server_default=func.now(), onupdate=func.now()) student = relationship('User', back_populates='results')
+from sqlalchemy import create_engine, Column, Integer, String, Text, TIMESTAMP, func
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+Base = declarative_base()
+
+class Project(Base):
+    __tablename__ = 'projects'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    title = Column(String, nullable=False)
+    description = Column(Text)
+    link = Column(String)
+    created_at = Column(TIMESTAMP, server_default=func.now())
+    updated_at = Column(TIMESTAMP, server_default=func.now(), onupdate=func.now())
+
+# Example engine and session setup
+# engine = create_engine('sqlite:///personal_portfolio.db')
+# Session = sessionmaker(bind=engine)
+# session = Session()
